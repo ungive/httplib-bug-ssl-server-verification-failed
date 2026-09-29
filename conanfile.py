@@ -1,9 +1,4 @@
-import os
-import importlib.util
-
 from conan import ConanFile
-from conan.errors import ConanException
-from conan.tools.cmake import cmake_layout
 
 
 class MusicPresence(ConanFile):
@@ -15,9 +10,8 @@ class MusicPresence(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain"
 
     requires = (
-        # LTS version until 7 September 2026
-        # Distros such a Mint ship with libssl3.0
-        "openssl/[~3.0]",
+        "openssl/[~3.5]",
+        "cpr/[~1.14]",
     )
 
     tool_requires = "cmake/3.31.6"
