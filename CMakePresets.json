@@ -1,0 +1,81 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "base",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            },
+            "hidden": true
+        },
+        {
+            "name": "windows-base",
+            "hidden": true,
+            "inherits": [
+                "base"
+            ],
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-msvc",
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64",
+            "cacheVariables": {
+                "CMAKE_C_FLAGS": "/MP",
+                "CMAKE_CXX_FLAGS": "/MP"
+            },
+            "toolchainFile": "${sourceDir}/conan/out/windows-msvc-visual-studio-x86_64/build/generators/conan_toolchain.cmake",
+            "inherits": [
+                "windows-base"
+            ],
+            "hidden": true
+        },
+        {
+            "name": "windows-msvc-debug",
+            "displayName": "Windows: Debug (MSVC)",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "inherits": [
+                "windows-msvc"
+            ]
+        },
+        {
+            "name": "windows-msvc-release",
+            "displayName": "Windows: Release (MSVC)",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "inherits": [
+                "windows-msvc"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-msvc-debug",
+            "displayName": "Debug",
+            "configurePreset": "windows-msvc-debug",
+            "configuration": "Debug",
+            "nativeToolOptions": [
+                "/m:16",
+                "/p:CL_MPcount=12"
+            ]
+        },
+        {
+            "name": "windows-msvc-release",
+            "displayName": "Release",
+            "configurePreset": "windows-msvc-release",
+            "configuration": "Release",
+            "nativeToolOptions": [
+                "/m:16",
+                "/p:CL_MPcount=12"
+            ]
+        }
+    ]
+}
