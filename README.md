@@ -3,7 +3,8 @@
 ## Dependencies
 
 - Conan CLI (package manager, for OpenSSL)
-- 
+- OpenSSL v3
+- httplib v0.58.0
 
 ## Building
 
