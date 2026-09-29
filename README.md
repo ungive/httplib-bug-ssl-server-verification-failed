@@ -1,4 +1,4 @@
-# httplib-bug-encode-query-component-isalnum
+# httplib-bug-ssl-server-verification-failed
 
 ## Dependencies
 
