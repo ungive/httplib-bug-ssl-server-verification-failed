@@ -12,6 +12,11 @@
 void test_httplib() {
     std::cerr << "test_httplib()..." << std::endl;
     httplib::Client cli("https://accounts.spotify.com");
+    // Windows certificate verification does not work:
+    cli.enable_windows_certificate_verification(true);
+    // Works when using a recent CA bundle:
+    // Downloaded from: https://curl.se/docs/caextract.html
+    // cli.set_ca_cert_path("C:\\Users\\User\\Downloads\\cacert-2026-09-25.pem");
     auto result = cli.Get("/api/token");
     if (result.error() != httplib::Error::Success) {
         std::cerr << "httplib: Request failed: "
