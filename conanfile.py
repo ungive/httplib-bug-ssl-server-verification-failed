@@ -12,7 +12,7 @@ class MusicPresence(ConanFile):
 
     requires = (
         "openssl/[~3.5]",
-        "cpr/[~1.14]",
+        "cpr/1.14.2",
     )
 
     tool_requires = "cmake/3.31.6"
