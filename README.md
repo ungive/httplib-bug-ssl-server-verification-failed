@@ -1,5 +1,10 @@
 # httplib-bug-ssl-server-verification-failed
 
+## Related issues:
+
+- https://github.com/yhirose/cpp-httplib/issues/2596 (resolved)
+- https://github.com/libcpr/cpr/issues/1325
+
 ## Dependencies
 
 - Conan CLI (package manager, for OpenSSL)
@@ -21,5 +26,10 @@ cmake --build --preset windows-msvc-debug
 
 ```
 .\build\windows-msvc-debug\Debug\main.exe
-Request failed: SSL server verification failed ssl_error=0 ssl_backend_error=20
+test_httplib()... version: 0.60.1
+httplib: OK
+test_libcpr()... version: 1.14.2
+libcpr: Request failed: SSL certificate problem: unable to get local issuer certificat
 ```
+
+(Note that the bug has been fixed in cpp-httplib since version 0.59.0)
