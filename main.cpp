@@ -10,7 +10,7 @@
 #include <cpr/cpr.h>
 
 void test_httplib() {
-    std::cerr << "test_httplib()..." << std::endl;
+    std::cerr << "test_httplib()... version: " << CPPHTTPLIB_VERSION << std::endl;
     httplib::Client cli("https://accounts.spotify.com");
     // Windows certificate verification does not work:
     cli.enable_windows_certificate_verification(true);
@@ -32,7 +32,7 @@ void test_httplib() {
 }
 
 void test_libcpr() {
-    std::cerr << "test_libcpr()..." << std::endl;
+    std::cerr << "test_libcpr()... version: " << CPR_VERSION << std::endl;
     cpr::Response result = cpr::Get(
         cpr::Url{std::string("https://accounts.spotify.com") + "/api/token"});
     if (result.error.code != cpr::ErrorCode::OK) {
