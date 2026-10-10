@@ -36,6 +36,8 @@ void test_libcpr() {
     cpr::Response result = cpr::Get(
         cpr::Url{std::string("https://accounts.spotify.com") + "/api/token"}
         // This is required with 1.14.2 via Conan, but not via Git.
+        // Alternatively, you can comment this and uncomment the line in
+        // conanfile.py to get it working as well.
         // cpr::SslOptions{}
     );
     if (result.error.code != cpr::ErrorCode::OK) {

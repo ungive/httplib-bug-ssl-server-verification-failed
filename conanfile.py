@@ -28,5 +28,10 @@ class MusicPresence(ConanFile):
 
         self.options["cpp-httplib"].with_openssl = True
 
+        # You can uncomment this to get cpr working, as an alternative to
+        # passing default-initialized cpr::SslOptions to cpr::Get.
+        # if self.settings.os == "Windows":
+        #     self.options["libcurl"].with_ssl = "schannel"
+
     def layout(self):
         cmake_layout(self, src_folder="src")
