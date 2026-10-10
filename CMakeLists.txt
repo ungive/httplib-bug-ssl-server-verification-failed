@@ -24,8 +24,14 @@ add_subdirectory(cpp-httplib EXCLUDE_FROM_ALL)
 target_link_libraries(main httplib::httplib)
 target_compile_definitions(main PRIVATE CPPHTTPLIB_OPENSSL_SUPPORT)
 
-find_package(cpr CONFIG REQUIRED)
+set(CPR_CURL_USE_LIBPSL false CACHE BOOL "" FORCE)
+# FIXME Enable ZLIB.
+set(CURL_ZLIB false CACHE BOOL "" FORCE)
+add_subdirectory(cpr EXCLUDE_FROM_ALL)
 target_link_libraries(main cpr::cpr)
+
+# find_package(cpr CONFIG REQUIRED)
+# target_link_libraries(main cpr::cpr)
 
 if(WIN32)
     if(DEFINED CONAN_RUNTIME_LIB_DIRS)

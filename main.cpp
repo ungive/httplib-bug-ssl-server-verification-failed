@@ -34,8 +34,10 @@ void test_httplib() {
 void test_libcpr() {
     std::cerr << "test_libcpr()... version: " << CPR_VERSION << std::endl;
     cpr::Response result = cpr::Get(
-        cpr::Url{std::string("https://accounts.spotify.com") + "/api/token"},
-        cpr::SslOptions{});
+        cpr::Url{std::string("https://accounts.spotify.com") + "/api/token"}
+        // This is required with 1.14.2 via Conan, but not via Git.
+        // cpr::SslOptions{}
+    );
     if (result.error.code != cpr::ErrorCode::OK) {
         std::cerr << "libcpr: Request failed: "
             << result.error.message << std::endl;

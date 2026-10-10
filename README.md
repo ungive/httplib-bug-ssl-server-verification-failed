@@ -9,8 +9,9 @@
 
 - Conan CLI (package manager, for OpenSSL)
 - OpenSSL v3.*
-- cpp-httplib v0.58.0
-- libcpr (libcurl) v1.4.* (for comparison)
+- cpp-httplib v0.58.0 (bugged version, fixed in 0.59.0)
+- libcpr (libcurl) v1.14.2 via Conan (bugged version)
+- libcpr (libcurl) v1.14.2 via Git (working)
 
 ## Building
 
